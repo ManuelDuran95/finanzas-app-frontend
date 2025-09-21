@@ -1,86 +1,22 @@
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-  <div>
-    <img
-      class="h-auto max-w-full rounded-lg"
-      src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg"
-      alt=""
-    />
+  @for (item of dashboardItems; track item.ruta) {
+ <div>
+    <!-- Card que abre el modal -->
+    <a
+      [routerLink]="item.ruta"
+      routerLinkActive="bg-blue-800"
+      class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 cursor-pointer"
+    >
+      <h5
+        class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+      >
+        {{ item.name }}  <i [class]="item.icon"></i>
+      </h5>
+      <p class="font-normal text-gray-700 dark:text-gray-400">
+       {{ item.description }}
+      </p>
+    </a>
   </div>
-  <div>
-    <img
-      class="h-auto max-w-full rounded-lg"
-      src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-      alt=""
-    />
-  </div>
-  <div>
-    <img
-      class="h-auto max-w-full rounded-lg"
-      src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg"
-      alt=""
-    />
-  </div>
-  <div>
-    <img
-      class="h-auto max-w-full rounded-lg"
-      src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg"
-      alt=""
-    />
-  </div>
-  <div>
-    <img
-      class="h-auto max-w-full rounded-lg"
-      src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg"
-      alt=""
-    />
-  </div>
-  <div>
-    <img
-      class="h-auto max-w-full rounded-lg"
-      src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg"
-      alt=""
-    />
-  </div>
-  <div>
-    <img
-      class="h-auto max-w-full rounded-lg"
-      src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-6.jpg"
-      alt=""
-    />
-  </div>
-  <div>
-    <img
-      class="h-auto max-w-full rounded-lg"
-      src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-7.jpg"
-      alt=""
-    />
-  </div>
-  <div>
-    <img
-      class="h-auto max-w-full rounded-lg"
-      src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-8.jpg"
-      alt=""
-    />
-  </div>
-  <div>
-    <img
-      class="h-auto max-w-full rounded-lg"
-      src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-9.jpg"
-      alt=""
-    />
-  </div>
-  <div>
-    <img
-      class="h-auto max-w-full rounded-lg"
-      src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-10.jpg"
-      alt=""
-    />
-  </div>
-  <div>
-    <img
-      class="h-auto max-w-full rounded-lg"
-      src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-11.jpg"
-      alt=""
-    />
-  </div>
+  }
+ 
 </div>
