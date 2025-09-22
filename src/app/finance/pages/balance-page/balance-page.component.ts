@@ -18,7 +18,7 @@ export default class BalancePageComponent implements OnInit {
   datasets: [
     {
       label: '',
-      data: [30, 100],
+      data: [300, 100],
       backgroundColor: ['#4613beff', '#f42c51ff'],
     }
   ]

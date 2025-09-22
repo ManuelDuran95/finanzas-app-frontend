@@ -1,7 +1,9 @@
 import { CurrencyPipe, DatePipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { Salida } from '../../interfaces/salidas.interface';
+import { SalidasService } from '../../services/salidas.service';
 
-interface Salida {
+interface Salidas{
   id: number;
   tipoSalida: string;
   monto: number;
@@ -14,13 +16,27 @@ interface Salida {
   imports: [DatePipe, CurrencyPipe],
   templateUrl: './salidas-view-page.component.html'
 })
-export default class SalidasViewPageComponent {
-  salidas: Salida[] = [
+export default class SalidasViewPageComponent implements OnInit {
+  public allSalidas: Salida[] = [];
+  private salidasService = inject(SalidasService)
+  salidas: Salidas[] = [
     { id: 1, tipoSalida: 'Compra de materiales', monto: 150.75, fecha: new Date('2024-01-15'), factura: 'factura_001.pdf' },
     { id: 2, tipoSalida: 'Pago de servicios', monto: 200.00, fecha: new Date('2024-02-10'), factura: 'factura_002.pdf' },
     { id: 3, tipoSalida: 'Gastos de viaje', monto: 300.50, fecha: new Date('2024-03-05'), factura: 'factura_003.pdf' },
     { id: 4, tipoSalida: 'Mantenimiento de equipo', monto: 120.00, fecha: new Date('2024-04-20'), factura: 'factura_004.pdf' },
     { id: 5, tipoSalida: 'Publicidad y marketing', monto: 250.00, fecha: new Date('2024-05-18'), factura: 'factura_005.pdf' }
   ];
+
+  getAllSalidas(){
+    this.salidasService.getAll().subscribe(resp =>{
+      this.allSalidas=resp;
+      console.log(resp)
+    }
+    )
+    }
+
+  ngOnInit(): void {
+      this.getAllSalidas();
+  } 
 
  }
