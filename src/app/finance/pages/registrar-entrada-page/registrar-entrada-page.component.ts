@@ -18,10 +18,14 @@ import { Entrada } from '../../interfaces/entradas.interface';
   templateUrl: './registrar-entrada-page.component.html',
 })
 export default class RegistrarEntradaPageComponent {
+   public isReporting: boolean = false;
+
   private entradasService = inject(EntradasService);
   fb = inject(FormBuilder);
   hasError = signal(false);
   isPosting = signal(false);
+
+  imagenBase64: string | null = null;
 
   entradaForm = this.fb.group({
     tipoEntrada: ['', [Validators.required, Validators.minLength(3)]],
@@ -34,7 +38,7 @@ export default class RegistrarEntradaPageComponent {
       ],
     ],
     fecha: ['', [Validators.required, Validators.minLength(6)]],
-    facturaUrl: [''],
+    facturaUrl: ['',[ Validators.required]],
   });
   onSubmit() {
     if (this.entradaForm.invalid) {
@@ -55,7 +59,7 @@ export default class RegistrarEntradaPageComponent {
     const newEntrada: Entrada = {
       Tipo_entrada: tipoEntrada!,
       Monto: this.entradaForm.value.monto!.toString(),
-      Factura: facturaUrl || '',
+      Factura: this.imagenBase64 || '',
       Fecha: this.convertDate(fecha!),
       id_usuario: '1',
     };
@@ -78,4 +82,27 @@ export default class RegistrarEntradaPageComponent {
     const day = String(d.getDate()).padStart(2, '0');
     return `${year}-${month}-${day}`;
   }
+
+  onFileSelected(event: Event) {
+  const input = event.target as HTMLInputElement;
+
+  if (input.files && input.files[0]) {
+    const file = input.files[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      const base64 = reader.result as string;
+
+      // Guardar en el formControl
+      this.entradaForm.get('facturaUrl')?.setValue(base64);
+      this.imagenBase64 = base64;
+
+
+      console.log('Factura en Base64:', base64.substring(0, 100) + '...'); // solo mostramos un pedazo
+    };
+
+    reader.readAsDataURL(file); // 👈 convierte a base64
+  }
+}
+  
 }

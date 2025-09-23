@@ -1,5 +1,5 @@
 import { CurrencyPipe, DatePipe } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { Salida } from '../../interfaces/salidas.interface';
 import { SalidasService } from '../../services/salidas.service';
 
@@ -17,6 +17,9 @@ interface Salidas{
   templateUrl: './salidas-view-page.component.html'
 })
 export default class SalidasViewPageComponent implements OnInit {
+
+
+  @Input() isReporting: boolean = true;
   public allSalidas: Salida[] = [];
   private salidasService = inject(SalidasService)
   salidas: Salidas[] = [
@@ -38,5 +41,8 @@ export default class SalidasViewPageComponent implements OnInit {
   ngOnInit(): void {
       this.getAllSalidas();
   } 
+  getTotalSalidas(): number {
+    return this.allSalidas.reduce((total, salida) => total + parseFloat(salida.Monto), 0);
+  }
 
  }

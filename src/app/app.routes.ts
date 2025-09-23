@@ -45,6 +45,11 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./finance/pages/balance-page/balance-page.component'),
       },
+      {
+        path: 'about',
+        loadComponent: () =>
+          import('./finance/pages/acerca-page/acerca-page.component'),
+      },
 
       {
         path: '**',

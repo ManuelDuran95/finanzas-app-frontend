@@ -1,5 +1,5 @@
 import { CurrencyPipe, DatePipe } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { EntradasService } from '../../services/entradas.service';
 import { Entrada } from '../../interfaces/entradas.interface';
 
@@ -17,6 +17,8 @@ interface entradas {
   templateUrl: './entradas-view-page.component.html'
 })
 export default class EntradasViewPageComponent implements OnInit{ 
+
+  @Input() isReporting: boolean = true;
 
   public allEntradas: Entrada[] = [];
   entradasService=inject(EntradasService)
@@ -37,6 +39,10 @@ export default class EntradasViewPageComponent implements OnInit{
   }
   ngOnInit(): void {
       this.getAllEntradas();
+  }
+
+  getTotalEntradas(): number {
+    return this.allEntradas.reduce((total, entrada) => total + parseFloat(entrada.Monto), 0);
   }
 
 }

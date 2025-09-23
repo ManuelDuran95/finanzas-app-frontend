@@ -50,6 +50,12 @@ export class FinanceSideMenuOptionsComponent {
       lebel: 'Balance',
       subLebel: 'Ver el balance',
       route: '/app/balance'
+    },
+    {
+      lebel:'Acerda de',
+      route:'/app/about',
+      subLebel:'Información sobre la aplicación',
+      icon:'fa-solid fa-circle-info'
     }
   ];
 

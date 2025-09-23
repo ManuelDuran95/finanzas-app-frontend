@@ -12,12 +12,16 @@
                 <th scope="col" class="px-6 py-3">
                     Monto
                 </th>
-                <th scope="col" class="px-6 py-3">
+                  @if (isReporting) {
+                     <th scope="col" class="px-6 py-3">
                     Fecha
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Factura
                 </th>
+
+                }
+                  
             </tr>
         </thead>
         <tbody>
@@ -29,15 +33,26 @@
                 <td class="px-6 py-4">
                     {{ salida.Monto | currency:'USD':'symbol':'1.2-2' }}
                 </td>
+                @if (isReporting) {
+                    
                 <td class="px-6 py-4">
-                    {{ salida.Fecha |date:'short' }}
+                    {{ salida.Fecha|date:'mediumDate' }}
                 </td>
             
                 <td class="px-6 py-4">
                     <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Ir a factura</a>
                 </td>
+                }
             </tr>
             }
+            <tr>
+                <td class="px-6 py-4 font-bold text-gray-900 whitespace-nowrap dark:text-white">
+                    Total
+                </td>
+                <td class="px-6 py-4 font-bold text-gray-900 whitespace-nowrap dark:text-white">
+                    {{ getTotalSalidas() | currency:'USD':'symbol':'1.2-2' }}
+                </td>
+            </tr>
            
         </tbody>
     </table>
