@@ -13,13 +13,13 @@ Antes de comenzar, asegúrate de tener instalados:
 - [Angular CLI](https://angular.dev/cli):
   ```bash
   npm install -g @angular/cli
-git clone https://github.com/usuario/mi-app-angular19.git
-cd mi-app-angular19
-Ejecutar en desarrollo
+git clone git@github.com:ManuelDuran95/finanzas-app-frontend.git
+cd finanzas-app-frontend-01
+
 
 Levantar el servidor local:
 
-ng serve
+ng serve -o
 
 
 Acceder en:
