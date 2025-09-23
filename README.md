@@ -1,6 +1,6 @@
-# 📌 Proyecto Angular 19 con Firebase Hosting
+# 📌 Proyecto Angular 19 
 
-Aplicación desarrollada con **Angular 19** y desplegada en **Firebase Hosting**.
+Aplicación desarrollada con **Angular 19**
 
 ---
 
