@@ -6,6 +6,8 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { provideAnimations } from '@angular/platform-browser/animations';
+
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), 
@@ -13,6 +15,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideClientHydration(),
     provideAnimationsAsync(),
-    provideNativeDateAdapter()
+    provideNativeDateAdapter(),
+    provideAnimations()
   ]
 };
